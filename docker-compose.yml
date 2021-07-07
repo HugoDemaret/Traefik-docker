@@ -1,0 +1,40 @@
+version: '3'
+services:
+  traefik:
+    image: traefik
+    restart: unless-stopped
+    networks:
+      expose-network:
+        ipv4_address: 172.20.0.100
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /PATH/TO/traefik.toml:/traefik.toml
+      - /PATH/TO/acme.json:/acme.json
+    labels:
+      # Enable traefik
+      - "traefik.enable=true"
+      # Set host
+      - "traefik.http.routers.traefik.rule=Host(`traefik.your.url`)"
+      # Set service
+      - "traefik.http.routers.traefik.service=api@internal"
+      # Set http resolver
+      - "traefik.http.routers.traefik.tls.certResolver=le"
+      # Set to the secure endpoint
+      - "traefik.http.routers.traefik.entrypoints=secure"
+      # Set the auth middleware
+      - "traefik.http.routers.traefik.middlewares=traefik-auth"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=name_of_user:hashed_password"
+      # Redirect to https middleware
+      # middleware redirect
+      #- "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # global redirect to https
+      - "traefik.http.routers.traefik-redir.rule=Host(`traefik.your.url`)"
+      - "traefik.http.routers.traefik-redir.entrypoints=insecure"
+      - "traefik.http.routers.traefik-redir.middlewares=redirect-to-https"
+networks:
+  expose-network:
+    external:
+      name: expose-network
