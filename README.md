@@ -12,7 +12,7 @@
 > sudo bash authcreate.sh
 - Replace name_of_user:hashed_password by the user name and the hash generated previously
 
-- Create a file named acme.json and set the permission to 600
+- Create a file named acme.json and set its permissions to 600
 > touch acme.json
 <br>chmod 600 acme.json
 
