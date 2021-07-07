@@ -1,3 +1,20 @@
-# Traefik-docker
-My personal traefik reverse proxy configuration on docker
-**
+# Traefik docker configuration
+## With Let's Encrypt certificate
+- Install docker and docker compose
+> apt-get install docker docker-compose
+- Copy this repository
+> git clone https://github.com/HugoDemaret/Traefik-docker/blob/main/README.md
+- Replace your.url in docker-compose.yml by your URL
+- Set the path to your installation in docker-compose.yml
+- Set your email address in traefik.toml
+
+- Run the authcreate.sh script and follow the instructions
+> sudo bash authcreate.sh
+- Replace name_of_user:hashed_password by the user name and the hash generated previously
+
+- Create a file named acme.json and set the permission to 600
+> touch acme.json
+<br>chmod 600 acme.json
+
+- Run start.sh
+> sudo bash start.sh
