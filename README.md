@@ -18,3 +18,8 @@
 
 - Run start.sh
 > sudo bash start.sh
+
+
+## To do list:
+1. Make an automation bash script
+2. Improve the current README.md file by making it more readable and user-friendly
