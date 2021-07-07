@@ -1,0 +1,29 @@
+#traefik.toml:
+
+[global]
+  sendAnonymousUsage = false
+
+[log]
+  level = "INFO"
+  format = "common"
+
+[providers]
+  [providers.docker]
+    endpoint = "unix:///var/run/docker.sock"
+    watch = true
+    exposedByDefault = false
+    swarmMode = false
+    network = "expose-network"
+[api]
+  dashboard = true
+
+[entryPoints]
+  [entryPoints.insecure]
+    address = ":80"
+  [entryPoints.secure]
+    address = ":443"
+
+[certificatesResolvers.le.acme]
+  email = "email@example.com"
+  storage = "acme.json"
+  tlschallenge = true
