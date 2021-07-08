@@ -40,6 +40,9 @@
 ```touch acme.json```
 ```chmod 600 acme.json```
 
+- Create a docker network named "expose-network"
+```docker network create expose-network --subnet=172.20.0.0/16```
+
 - Modify the path (in start.sh) and run start.sh
 
 ```sudo bash start.sh```
