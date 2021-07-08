@@ -1,9 +1,14 @@
 #!/bin/bash
-echo "|-----------------------------------------|"
-echo "|---Traefik reverse proxy autoinstaller---|"
-echo "|-----------------------------------------|"
-echo "|--------------version 0.0.2--------------|"
-echo "|-----------------------------------------|"
+version="0.0.2"
+echo "
+ _____               __ _ _     ___        _       _____          _        _ _           
+|_   _|             / _(_) |   / _ \      | |     |_   _|        | |      | | |          
+  | |_ __ __ _  ___| |_ _| | _/ /_\ \_   _| |_ ___  | | _ __  ___| |_ __ _| | | ___ _ __ 
+  | | '__/ _` |/ _ \  _| | |/ /  _  | | | | __/ _ \ | || '_ \/ __| __/ _` | | |/ _ \ '__|
+  | | | | (_| |  __/ | | |   <| | | | |_| | || (_) || || | | \__ \ || (_| | | |  __/ |   
+  \_/_|  \__,_|\___|_| |_|_|\_\_| |_/\__,_|\__\___/\___/_| |_|___/\__\__,_|_|_|\___|_|   
+"
+echo "Version : $VERSION"
 
 sudo apt-get update -y && apt-get upgrade -y
 
@@ -50,9 +55,7 @@ read -p "Password: "  PW
 string=$(htpasswd -nbB $USER $PW)
 
 # Escapes string for docker-compose
-echo "debug 1"
 credentials=$(echo "$string" | sed -e"s/\$/\$\$/g")
-echo "debug 2"
 sed -i -e"s/name_of_user\:hashed_password/$credentials/g" docker-compose.yml
 
 # Modify the owner (so it is root)
