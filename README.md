@@ -8,6 +8,10 @@
 
 ```sudo bash auto_installer.sh```
 
+- To start Traefik run : 
+
+```sudo bash start.sh```
+
 # Manual installation :
 
 - Install docker and docker compose
