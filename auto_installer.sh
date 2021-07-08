@@ -1,9 +1,9 @@
 #!/bin/bash
-echo "|-----------------------------------------|\n"
-echo "|---Traefik reverse proxy autoinstaller---|\n"
-echo "|-----------------------------------------|\n"
-echo "|--------------version 0.0.2--------------|\n"
-echo "|-----------------------------------------|\n"
+echo "|-----------------------------------------|"
+echo "|---Traefik reverse proxy autoinstaller---|"
+echo "|-----------------------------------------|"
+echo "|--------------version 0.0.2--------------|"
+echo "|-----------------------------------------|"
 
 sudo apt-get update -y && apt-get upgrade -y
 
@@ -16,27 +16,31 @@ which docker >/dev/null || (sudo apt-get install docker docker-compose)
 
 
 # Starting configuration
-echo "Starting configuration...\n"
+echo "Starting configuration..."
 mkdir traefik
 cd traefik
 git clone https://github.com/HugoDemaret/Traefik-docker.git
+mv Traefik-docker/* .
+rm -r Traefik-docker/.git*
+rmdir Traefik-docker
 
 # Taking the required information
-read -p "Enter your email address:\n" emailaddress
-read -p "Enter the url \n" url
-echo "Your Traefik monitoring app will be deployed at:\n"
-echo $url
-echo "|----------------------------|\n"
-echo "|--Configuring your traefik--|\n"
-echo "|----------------------------|\n"
+read -p "Enter your email address:" emailaddress
+read -p "Enter the url " url
+echo "Your Traefik monitoring app will be deployed at:"
+echo "traefik."$url
+echo "|----------------------------|"
+echo "|--Configuring your traefik--|"
+echo "|----------------------------|"
 # Replaces by the user information
 sed -i -e"s/\/PATH\/TO/./g" docker-compose.yml
 sed -i -e"s/\/PATH\/TO/./g" start.sh
 sed -i -e"s/email@example.com/$emailaddress/g" traefik.toml
 sed -i -e"s/your.url/$url/g" docker-compose.yml
-echo "|----------------------------|\n"
-echo "|--Creating authentication---|\n"
-echo "|----------------------------|\n"
+echo "Done !"
+echo "|----------------------------|"
+echo "|--Creating authentication---|"
+echo "|----------------------------|"
 
 # Asks username and password
 read -p "User: "  USER
@@ -46,8 +50,10 @@ read -p "Password: "  PW
 string=$(htpasswd -nbB $USER $PW)
 
 # Escapes string for docker-compose
-credentials=$(echo "$string" | sed -e 's/\$/\$\$/g')
-sed -i -e"s/name_of_user:hashed_password/$credentials/" docker-compose.yml
+echo "debug 1"
+credentials=$(echo "$string" | sed -e"s/\$/\$\$/g")
+echo "debug 2"
+sed -i -e"s/name_of_user\:hashed_password/$credentials/g" docker-compose.yml
 
 # Modify the owner (so it is root)
 path=$(pwd)
@@ -56,7 +62,7 @@ chown 0:0 $path
 touch acme.json
 chmod 600 acme.json
 
-echo "|----------------------------|\n"
-echo "|------------DONE------------|\n"
-echo "|----------------------------|\n"
+echo "|----------------------------|"
+echo "|------------DONE------------|"
+echo "|----------------------------|"
 
