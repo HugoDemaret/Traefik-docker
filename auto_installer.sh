@@ -31,6 +31,7 @@ echo "|--Configuring your traefik--|\n"
 echo "|----------------------------|\n"
 # Replaces by the user information
 sed -i -e"s/\/PATH\/TO/./g" docker-compose.yml
+sed -i -e"s/\/PATH\/TO/./g" start.sh
 sed -i -e"s/email@example.com/$emailaddress/g" traefik.toml
 sed -i -e"s/your.url/$url/g" docker-compose.yml
 echo "|----------------------------|\n"
