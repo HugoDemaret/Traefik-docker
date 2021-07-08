@@ -1,5 +1,6 @@
 # Traefik docker configuration
 ## With Let's Encrypt certificate !
+## Pour les utilisateurs français, voir FRENCH.md
 
 
 # Automatic installation :
