@@ -64,7 +64,8 @@ chown 0:0 $path
 # Creates acme.json and sets its permissions
 touch acme.json
 chmod 600 acme.json
-
+# expose-network creation
+docker network create expose-network --subnet=172.20.0.0/16
 echo "|----------------------------|"
 echo "|------------DONE------------|"
 echo "|----------------------------|"
