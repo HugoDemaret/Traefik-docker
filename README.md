@@ -6,7 +6,7 @@
 
 Run the following and follow the instructions :
 > wget https://github.com/HugoDemaret/traefik_installer/blob/0a1ef6f0be7e558eec1a140b490a9e234efac970/traefik_installer.sh
-> sudo bash traefik_installer.sh
+<br>sudo bash traefik_installer.sh
 
 # Manual installation :
 
