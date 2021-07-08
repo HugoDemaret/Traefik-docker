@@ -33,7 +33,7 @@
 ```touch acme.json```
 ```chmod 600 acme.json```
 
-- Run start.sh
+- Modify the path (in start.sh) and run start.sh
 
 ```sudo bash start.sh```
 
