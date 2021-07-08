@@ -19,7 +19,7 @@ which docker >/dev/null || (sudo apt-get install docker docker-compose)
 echo "Starting configuration...\n"
 cd /home
 mkdir traefik
-git clone https://github.com/HugoDemaret/Traefik-docker
+git clone https://github.com/HugoDemaret/Traefik-docker.git
 
 # Taking the required information
 read -p "Enter your email address:\n" emailaddress
@@ -51,7 +51,7 @@ sed -i -e"s/name_of_user:hashed_password/$credentials/" docker-compose.yml
 
 # Modify the owner (so it is root)
 path=$(pwd)
-chmown 0:0 $path
+chown 0:0 $path
 # Creates acme.json and sets its permissions
 touch acme.json
 chmod 600 acme.json
