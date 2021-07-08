@@ -8,6 +8,7 @@
 - Run the following and follow the instructions :
 
 ```wget https://raw.githubusercontent.com/HugoDemaret/Traefik-docker/main/auto_installer.sh```
+
 ```sudo bash auto_installer.sh```
 
 - To start Traefik run : 
