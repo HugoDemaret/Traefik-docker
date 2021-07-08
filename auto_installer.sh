@@ -17,7 +17,6 @@ which docker >/dev/null || (sudo apt-get install docker docker-compose)
 
 # Starting configuration
 echo "Starting configuration...\n"
-cd /home
 mkdir traefik
 git clone https://github.com/HugoDemaret/Traefik-docker.git
 
