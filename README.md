@@ -20,7 +20,7 @@ Run the following and follow the instructions :
 
 - Run the authcreate.sh script and follow the instructions
 > wget https://github.com/HugoDemaret/authcreate/blob/36f42da04972cc73b958405a95bd0679475364fc/authcreate.sh
-> sudo bash authcreate.sh
+<br> sudo bash authcreate.sh
 - Replace name_of_user:hashed_password by the user name and the hash generated previously
 
 - Create a file named acme.json and set its permissions to 600
