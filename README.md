@@ -30,6 +30,8 @@ Run the following and follow the instructions :
 
 
 ## To do list:
-1. Make an automation bash script : DONE
-2. Improve the current README.md file by making it more readable and user-friendly
-3. Make a windows version
+~~~Make an automation bash script~~~ Done
+
+Improve the current README.md file by making it more readable and user-friendly
+
+Make a windows version
