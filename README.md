@@ -13,7 +13,7 @@ Run the following and follow the instructions :
 - Install docker and docker compose
 > apt-get install docker docker-compose
 - Copy this repository
-> git clone https://github.com/HugoDemaret/Traefik-docker/blob/main/README.md
+> git clone https://github.com/HugoDemaret/Traefik-docker.git
 - Replace your.url in docker-compose.yml by your URL
 - Set the path to your installation in docker-compose.yml
 - Set your email address in traefik.toml
