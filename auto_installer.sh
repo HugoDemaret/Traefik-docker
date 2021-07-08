@@ -2,7 +2,7 @@
 echo "|-----------------------------------------|\n"
 echo "|---Traefik reverse proxy autoinstaller---|\n"
 echo "|-----------------------------------------|\n"
-echo "|--------------version 0.0.1--------------|\n"
+echo "|--------------version 0.0.2--------------|\n"
 echo "|-----------------------------------------|\n"
 
 sudo apt-get update -y && apt-get upgrade -y
@@ -49,6 +49,9 @@ string=$(htpasswd -nbB $USER $PW)
 credentials=$(echo "$string" | sed -e 's/\$/\$\$/g')
 sed -i -e"s/name_of_user:hashed_password/$credentials/" docker-compose.yml
 
+# Modify the owner (so it is root)
+path=$(pwd)
+chmown 0:0 $path
 # Creates acme.json and sets its permissions
 touch acme.json
 chmod 600 acme.json
